@@ -1,0 +1,9 @@
+/* PieChart.css */
+#pie-chart-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+  }
+  
