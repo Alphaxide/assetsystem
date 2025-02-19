@@ -14,6 +14,9 @@ import {
 import { Google } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 
+
+import { useNavigate } from "react-router-dom"; 
+
 // Custom styled components
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -48,6 +51,8 @@ export default function SignUp() {
   });
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
+
+    const navigate = useNavigate(); 
 
   const validateInputs = () => {
     let newErrors = {};
@@ -86,7 +91,7 @@ export default function SignUp() {
       const data = await response.json();
       if (response.ok) {
         setMessage("User registered successfully!");
-        setFormData({ name: "", email: "", password: "", company_name: "", phone: "" });
+        setTimeout(() => navigate("/CreateAsset"), 1000); 
       } else {
         setMessage(data.message || "Registration failed.");
       }

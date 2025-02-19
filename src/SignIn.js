@@ -59,7 +59,7 @@ export default function SignIn() {
       if (response.ok) {
         setMessage("Sign-in successful!");
         console.log("User Data:", data.user);
-        setTimeout(() => navigate("/home"), 1000); // Redirect after 1s
+        setTimeout(() => navigate("/CreateAsset"), 1000); // Redirect after 1s
       } else {
         setMessage(data.message || "Sign-in failed.");
       }
