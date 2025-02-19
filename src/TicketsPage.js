@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Container, Grid, Typography, Paper } from '@mui/material';
+import { Box, Container, Grid, Typography, Paper, Button } from '@mui/material';
 import CustomAppBar from './CustomAppBar';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import locationIcon from './images/location.png';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const InfoCard = ({ title, value }) => (
   <Paper sx={{ padding: 1.5, boxShadow: 0, borderRadius: 1, height: 80, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -20,10 +21,11 @@ const InfoCard = ({ title, value }) => (
 );
 
 const EventDashboard = () => {
-    const [data, setData] = useState({
-      eventName: 'Annual Tech Conference',
-      eventDate: '2025-03-15',
-      venue: 'Uhuru Park',
+  const navigate = useNavigate();
+  const [data, setData] = useState({
+    eventName: 'Annual Tech Conference',
+    eventDate: '2025-03-15',
+    venue: 'Uhuru Park',
     totalTicketsSold: 6000,
     checkedInAttendees: 5000,
     liveTracking: 3000,
@@ -60,7 +62,7 @@ const EventDashboard = () => {
       <CustomAppBar />
       <Container maxWidth="lg" sx={{ marginTop: 20 }}>
         <Typography variant="h4" sx={{ marginBottom: 3 }}>
-          event dashboard
+          Event Dashboard
         </Typography>
 
         <Grid container spacing={2}>
@@ -72,10 +74,18 @@ const EventDashboard = () => {
           <Grid item xs={6} sm={4}><InfoCard title="Live Tracking Users" value={data.liveTracking} /></Grid>
         </Grid>
 
+        <Button 
+          variant="contained" 
+          color="primary" 
+          sx={{ marginTop: 3 }} 
+          onClick={() => navigate('/searchpage')}
+        >
+          Search Page
+        </Button>
 
         <Box sx={{ marginTop: 3, height: 400, marginBottom: 3 }}>
           <Typography variant="h6" sx={{ marginBottom: 2 }}>
-            live map tracking
+            Live Map Tracking
           </Typography>
           <MapContainer center={[-1.2921, 36.8219]} zoom={15} style={{ height: '100%', width: '100%', background: '#808080' }}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -85,10 +95,10 @@ const EventDashboard = () => {
           </MapContainer>
         </Box>
 
-        <Box sx={{ marginTop: 3, display: 'flex', gap: 2 }}>
-          <Box sx={{ width: '50%' }}>
-            <Typography variant="h6" sx={{ marginBottom: 2 }}>
-              check-in time distribution
+        <Box sx={{ marginTop: 3, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }}>
+          <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+            <Typography variant="h6" sx={{ marginBottom: 2, textAlign: 'center' }}>
+              Check-In Time Distribution
             </Typography>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={data.checkInDistribution}>
@@ -100,9 +110,10 @@ const EventDashboard = () => {
               </BarChart>
             </ResponsiveContainer>
           </Box>
-          <Box sx={{ width: '50%' }}>
-            <Typography variant="h6" sx={{ marginBottom: 2 }}>
-              attendance breakdown
+
+          <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+            <Typography variant="h6" sx={{ marginBottom: 2, textAlign: 'center' }}>
+              Attendance Breakdown
             </Typography>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>

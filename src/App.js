@@ -11,6 +11,7 @@ import TransactionDetails from './TransactionDetails';
 
 import OverviewPage from './TicketsPage';
 
+import AttendeeSearchTracking from './TicketSearch';
 import AssetListView from './AssetPage';
 import ConfirmPaymentContainer from './ConfirmationPage';
 import CreateAsset from './AssetForm';
@@ -40,6 +41,9 @@ function App() {
         <Route path="/CreateAsset" element={<CreateAsset />} />
 
         <Route path="/tickets" element={<OverviewPage />} />
+
+
+        <Route path="/searchpage" element={<AttendeeSearchTracking />} />
 
         <Route path="/Updates/:id" element={<UpdateAsset />} />
 
