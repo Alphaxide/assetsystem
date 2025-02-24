@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
 import CustomAppBar from './CustomAppBar';
 
+import headerImage from './assets/header.jpg';
+
 const TransactionHistory = () => {
   const [transactions, setTransactions] = useState([]);
   const navigate = useNavigate();
@@ -17,17 +19,38 @@ const TransactionHistory = () => {
   return (
     <>
       <CustomAppBar />
+
       <Box sx={{ maxWidth: '800px', margin: 'auto', padding: 3, marginTop: 15 }}>
-        <Typography variant="h6" sx={{ marginBottom: 2 }}>Transaction History</Typography>
+        <Typography variant="h6" sx={{ marginBottom: 2 }}></Typography>
+
+        <Box 
+                            sx={{
+                              backgroundImage: `url(${headerImage})`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center',
+                              borderRadius: 1,
+                              padding: 4,
+                              color: 'white',
+                              boxShadow: 2,
+                              marginBottom: 3
+                            }}
+                          >
+                            <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+                              Welcome to Transaction Page
+                            </Typography>
+                            <Typography variant="body1">
+                              Here you can see an overview of your transctions.
+                            </Typography>
+                          </Box>
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
           <TableContainer>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell align="center">Transaction ID</TableCell>
-                  <TableCell align="center">Amount (KES)</TableCell>
-                  <TableCell align="center">Status</TableCell>
-                  <TableCell align="center">Details</TableCell>
+                  <TableCell align="center" sx={{ color: '#016067', fontWeight: 'bold', }}>Transaction ID</TableCell>
+                  <TableCell align="center" sx={{ color: '#016067', fontWeight: 'bold', }}>Amount (KES)</TableCell>
+                  <TableCell align="center" sx={{ color: '#016067', fontWeight: 'bold', }}>Status</TableCell>
+                  <TableCell align="center" sx={{ color: '#016067', fontWeight: 'bold', }}>Details</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -39,7 +62,7 @@ const TransactionHistory = () => {
                       {txn.payment_status}
                     </TableCell>
                     <TableCell align="center">
-                      <Button variant="contained" color="primary" onClick={() => navigate(`/transaction/${txn.id}`)}>
+                      <Button variant="contained" sx={{backgroundColor: "#016067"}} onClick={() => navigate(`/transaction/${txn.id}`)}>
                         View Details
                       </Button>
                     </TableCell>

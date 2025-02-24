@@ -1,0 +1,6 @@
+/* style.css */
+body {
+  background-color: rgba(238, 236, 236, 0.658); /* Set the background color to grey */
+  height: 100vh; /* Ensures the background color covers the full viewport height */
+  margin: 0; /* Removes default body margin */
+}

@@ -32,7 +32,6 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 const AssetContainer = styled(Stack)(({ theme }) => ({
-  height: "100vh",
   padding: theme.spacing(2),
   [theme.breakpoints.up("sm")]: {
     padding: theme.spacing(4),
@@ -45,6 +44,7 @@ export default function CreateAsset() {
     category: "",
     gps_tracker_id: "",
     value: "",
+    sn: "", // Serial number field
     state: "Active",
   });
   const [errors, setErrors] = useState({});
@@ -73,6 +73,10 @@ export default function CreateAsset() {
     }
     if (!formData.value || isNaN(parseFloat(formData.value))) {
       newErrors.value = "Valid asset value is required.";
+      valid = false;
+    }
+    if (!formData.sn.trim()) {
+      newErrors.sn = "Serial Number is required.";
       valid = false;
     }
 
@@ -113,7 +117,7 @@ export default function CreateAsset() {
       <AssetContainer direction="column" justifyContent="center">
         <CssBaseline />
         <Card sx={{ p: 4, mt: 15 }}>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" gutterBottom sx={{ color: "#016067" }}>
             Create Asset
           </Typography>
           {message && <Typography color="primary">{message}</Typography>}
@@ -171,11 +175,22 @@ export default function CreateAsset() {
               helperText={errors.value}
             />
 
+            <TextField
+              fullWidth
+              label="Serial Number"
+              margin="normal"
+              variant="outlined"
+              value={formData.sn}
+              onChange={(e) => setFormData({ ...formData, sn: e.target.value })}
+              error={!!errors.sn}
+              helperText={errors.sn}
+            />
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 2, backgroundColor: "black", color: "white" }}
+              sx={{ mt: 2, backgroundColor: "#016067", color: "white" }}
             >
               Create Asset
             </Button>

@@ -5,11 +5,15 @@ import {
   CssBaseline,
   TextField,
   Typography,
-  Stack,
   Card as MuiCard,
+  Grid,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+
+// Import the local image
+import SignInImage from "./assets/header.jpg"; // Background image
+import Logo from "./assets/logo192.png"; // Your logo image
 
 // Custom styled components
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -27,13 +31,22 @@ const Card = styled(MuiCard)(({ theme }) => ({
   },
 }));
 
-const SignInContainer = styled(Stack)(({ theme }) => ({
+const SignInContainer = styled(Box)(({ theme }) => ({
   height: "100vh",
-  padding: theme.spacing(2),
-  [theme.breakpoints.up("sm")]: {
-    padding: theme.spacing(4),
-  },
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "relative", // To position the form correctly
+  backgroundImage: `url(${SignInImage})`, // Set background image
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  width: "100%",
 }));
+
+const LogoImage = styled("img")({
+  maxWidth: "150px", // Set the max width of the logo
+  marginBottom: "20px", // Add some margin below the logo
+});
 
 export default function SignIn() {
   const [formData, setFormData] = useState({
@@ -69,44 +82,53 @@ export default function SignIn() {
   };
 
   return (
-    <SignInContainer direction="column" justifyContent="center">
+    <SignInContainer>
       <CssBaseline />
-      <Card sx={{ p: 4, mt: 5 }}>
-        <Typography variant="h4" gutterBottom>
-          Sign In
-        </Typography>
-        {message && <Typography color="primary">{message}</Typography>}
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 2 }}>
-          <TextField
-            fullWidth
-            label="Email Address"
-            margin="normal"
-            variant="outlined"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          />
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            margin="normal"
-            variant="outlined"
-            value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 2, backgroundColor: "black", color: "white" }}
-          >
-            Sign In
-          </Button>
-        </Box>
-        <Typography variant="body2" sx={{ mt: 2 }}>
-          Don't have an account? <Button href="/signup">Sign up</Button>
-        </Typography>
-      </Card>
+      <Grid container spacing={2} alignItems="center">
+        {/* Right side: Sign-in form */}
+        <Grid item xs={12} sm={6}>
+          <Card sx={{ p: 4, mt: 5 }}>
+            {/* Logo at the top */}
+            <Box display="flex" justifyContent="center">
+              <LogoImage src={Logo} alt="Logo" />
+            </Box>
+            <Typography variant="h4" gutterBottom textAlign="center">
+              Sign In
+            </Typography>
+            {message && <Typography color="primary" textAlign="center">{message}</Typography>}
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 2 }}>
+              <TextField
+                fullWidth
+                label="Email Address"
+                margin="normal"
+                variant="outlined"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+              <TextField
+                fullWidth
+                label="Password"
+                type="password"
+                margin="normal"
+                variant="outlined"
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 2, backgroundColor: "black", color: "white" }}
+              >
+                Sign In
+              </Button>
+            </Box>
+            <Typography variant="body2" sx={{ mt: 2 }} textAlign="center">
+              Don't have an account? <Button href="/signup">Sign up</Button>
+            </Typography>
+          </Card>
+        </Grid>
+      </Grid>
     </SignInContainer>
   );
 }

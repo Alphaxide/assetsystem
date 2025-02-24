@@ -6,6 +6,8 @@ import 'leaflet/dist/leaflet.css';
 import { TextField, Box, Typography, CircularProgress } from '@mui/material';
 import CustomAppBar from './CustomAppBar'; // Import CustomAppBar component
 
+import headerImage from './assets/header.jpg';
+
 // Custom Map Icon
 const customIcon = new Icon({
   iconUrl: require('./images/location.png'),
@@ -52,8 +54,27 @@ const AssetTracker = () => {
       <CustomAppBar />
 
       <Typography variant="h5" sx={{ marginBottom: 2, mt:15 }}>
-        Asset Tracking Map
+        
       </Typography>
+       <Box 
+                      sx={{
+                        backgroundImage: `url(${headerImage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: 1,
+                        padding: 4,
+                        color: 'white',
+                        boxShadow: 2,
+                        marginBottom: 3
+                      }}
+                    >
+                      <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+                        Welcome to Asset Tracking Page
+                      </Typography>
+                      <Typography variant="body1">
+                        Here you can see an overview of your assets and search.
+                      </Typography>
+                    </Box>
 
       {/* Search Bar */}
       <TextField

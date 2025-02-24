@@ -10,6 +10,7 @@ import TransactionHistory from './TransactionHistory';
 import TransactionDetails from './TransactionDetails';
 
 import OverviewPage from './TicketsPage';
+import './style.css';
 
 import AttendeeSearchTracking from './TicketSearch';
 import AssetListView from './AssetPage';

@@ -45,7 +45,7 @@ const TransactionDetails = () => {
       <CustomAppBar />
 
       <Box sx={{ maxWidth: '600px', margin: 'auto', padding: 3, textAlign: 'center' }}>
-        <Typography variant="h5" sx={{ marginBottom: 3, marginTop: '120px', fontWeight: 'bold' }}>
+        <Typography variant="h5" sx={{ color: '#016067',marginBottom: 3, marginTop: '120px', fontWeight: 'bold' }}>
           Transaction Details
         </Typography>
 
@@ -116,7 +116,7 @@ const TransactionDetails = () => {
         <Button 
           variant="contained" 
           color="secondary" 
-          sx={{ marginTop: 3 }} 
+          sx={{backgroundColor: '#016067', marginTop: 3 }} 
           onClick={handleDownloadInvoice}
         >
           Download Invoice

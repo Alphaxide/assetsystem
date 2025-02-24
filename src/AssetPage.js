@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import AssetSearchFilter from './AssetSearchFilter'; // Import the filter component
 import CustomAppBar from './CustomAppBar'; // Import the navigation bar
 
+import headerImage from './assets/header.jpg';
+
 const AssetListView = () => {
   const [assets, setAssets] = useState([]);
   const [filteredAssets, setFilteredAssets] = useState([]);
@@ -44,6 +46,8 @@ const AssetListView = () => {
     navigate(`/asset/${id}`);
   };
 
+  
+
   return (
     <>
       {/* Navigation Bar */}
@@ -52,8 +56,27 @@ const AssetListView = () => {
       {/* Asset List Content */}
       <Box sx={{ maxWidth: '1200px', margin: 'auto', padding: 3, mt: 15 }}>
         <Typography variant="h6" sx={{ textAlign: 'center', marginBottom: 2 }}>
-          Asset List View
+          
         </Typography>
+              <Box 
+                sx={{
+                  backgroundImage: `url(${headerImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  borderRadius: 1,
+                  padding: 4,
+                  color: 'white',
+                  boxShadow: 2,
+                  marginBottom: 3
+                }}
+              >
+                <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+                  Welcome to Assets Page
+                </Typography>
+                <Typography variant="body1">
+                  Here you can see an overview of your assets.
+                </Typography>
+              </Box>
 
         {/* Use the Search & Filter Component */}
         <AssetSearchFilter
@@ -69,10 +92,10 @@ const AssetListView = () => {
             <Table aria-label="asset list table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="center">Asset Name</TableCell>
-                  <TableCell align="center">Serial Number</TableCell>
-                  <TableCell align="center">Category</TableCell>
-                  <TableCell align="center">State</TableCell>
+                  <TableCell align="center" sx={{ color: '#016067', fontWeight: 'bold', }}>Asset Name</TableCell>
+                  <TableCell align="center" sx={{ color: '#016067',  fontWeight: 'bold', }}>Serial Number</TableCell>
+                  <TableCell align="center" sx={{ color: '#016067',  fontWeight: 'bold', }}>Category</TableCell>
+                  <TableCell align="center" sx={{ color: '#016067',  fontWeight: 'bold', }}>State</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -86,7 +109,20 @@ const AssetListView = () => {
                     <TableCell align="center">{asset.name}</TableCell>
                     <TableCell align="center">{asset.serial_number}</TableCell>
                     <TableCell align="center">{asset.category}</TableCell>
-                    <TableCell align="center">{asset.state}</TableCell>
+                    <TableCell align="center">
+                      <Box
+                        sx={{
+                          display: 'inline-block',
+                          padding: '4px 10px',
+                          borderRadius: '12px',
+                          backgroundColor: asset.state === 'Active' ? 'green' : 'red',
+                          color: 'white',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        {asset.state}
+                      </Box>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

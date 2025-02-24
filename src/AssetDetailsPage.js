@@ -44,7 +44,7 @@ const AssetDetailsPage = () => {
       <CustomAppBar />
 
       <Box sx={{ maxWidth: '1200px', margin: 'auto', padding: 3, mt: 15 }}>
-        <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: 3 }}>
+        <Typography variant="h4" sx={{color: '#016067', textAlign: 'center', marginBottom: 3 }}>
           Asset Details
         </Typography>
 
@@ -56,7 +56,7 @@ const AssetDetailsPage = () => {
 
         {/* Asset Activity Log */}
         <Box sx={{ marginTop: 4 }}>
-          <Typography variant="h5" sx={{ marginBottom: 2 }}>
+          <Typography variant="h5" sx={{ color: '#016067', marginBottom: 2 }}>
             Asset Activity Log
           </Typography>
           <TableContainer component={Paper} sx={{ boxShadow: 3 }}>

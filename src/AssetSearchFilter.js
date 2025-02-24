@@ -56,7 +56,7 @@ const AssetSearchFilter = ({ searchQuery, setSearchQuery, filters, setFilters, f
           },
         }}
       >
-        <MenuItem value="">All Serial Numbers</MenuItem>
+        <MenuItem value="">Serial Numbers</MenuItem>
         {filterOptions.serialNumbers.map(sn => (
           <MenuItem key={sn} value={sn}>{sn}</MenuItem>
         ))}
@@ -77,7 +77,7 @@ const AssetSearchFilter = ({ searchQuery, setSearchQuery, filters, setFilters, f
           },
         }}
       >
-        <MenuItem value="">All Categories</MenuItem>
+        <MenuItem value="">Categories</MenuItem>
         {filterOptions.categories.map(cat => (
           <MenuItem key={cat} value={cat}>{cat}</MenuItem>
         ))}
@@ -98,7 +98,7 @@ const AssetSearchFilter = ({ searchQuery, setSearchQuery, filters, setFilters, f
           },
         }}
       >
-        <MenuItem value="">All States</MenuItem>
+        <MenuItem value="">States</MenuItem>
         {filterOptions.states.map(st => (
           <MenuItem key={st} value={st}>{st}</MenuItem>
         ))}
