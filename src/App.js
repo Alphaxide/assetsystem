@@ -9,7 +9,6 @@ import TransactionHistory from './TransactionHistory';
 
 import TransactionDetails from './TransactionDetails';
 
-import OverviewPage from './TicketsPage';
 import './style.css';
 
 import AttendeeSearchTracking from './TicketSearch';
@@ -41,7 +40,6 @@ function App() {
 
         <Route path="/CreateAsset" element={<CreateAsset />} />
 
-        <Route path="/tickets" element={<OverviewPage />} />
 
 
         <Route path="/searchpage" element={<AttendeeSearchTracking />} />

@@ -87,9 +87,6 @@ export default function CustomAppBar() {
               <Button component={Link} to="/CreateAsset" sx={{ color: 'black', textTransform: 'none' }}>
                 + Asset
               </Button>
-              <Button component={Link} to="/tickets" sx={{ color: 'black', textTransform: 'none' }}>
-                Events
-              </Button>
               <Button component={Link} to="/profile" sx={{ color: 'black', textTransform: 'none' }}>
                 Profile
               </Button>
@@ -151,9 +148,6 @@ export default function CustomAppBar() {
                 </MenuItem>
                 <MenuItem component={Link} to="/CreateAsset" sx={{ color: 'black' }}>
                   + Asset
-                </MenuItem>
-                <MenuItem component={Link} to="/tickets" sx={{ color: 'black' }}>
-                  Events
                 </MenuItem>
                 <MenuItem component={Link} to="/profile" sx={{ color: 'black' }}>
                   Profile
